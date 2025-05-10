@@ -12,6 +12,7 @@ public class Book {
     private int id;
     private String name;
     private String author;
+    private String date; //SHOULD BE OTHER FORMAT. DATE FORMAT BUT I DON'T GRASP THAT FULLY YET
     private String isbn;
     private long price;
     private String publishingHouse;

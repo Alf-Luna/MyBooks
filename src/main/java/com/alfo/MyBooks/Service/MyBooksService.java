@@ -1,5 +1,6 @@
 package com.alfo.MyBooks.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,11 +12,21 @@ import com.alfo.MyBooks.Model.Book;
 @Service //so it starts it. Kinda like @component but specific for service
 public class MyBooksService {
 
-    List<Book> books =  Arrays.asList(
-        new Book(1, "Frankenstein", "Mary Shelley", "978-123456-78", 12000, "Penguin Books"),
-        new Book(2, "The King in Yellow", "Robert W. Chambers", "978-876543-21", 10000, "Wordsworth Classics"));
+    List<Book> books =  new ArrayList<>(Arrays.asList(
+        new Book(1, "Frankenstein", "Mary Shelley", "1818", "978-123456-78", 12000, "Penguin Books"),
+        new Book(2, "The King in Yellow", "Robert W. Chambers", "1895", "978-876543-21", 10000, "Wordsworth Classics")));
 
     public List<Book> getBooks(){
         return books;
+    }
+
+    public Book getBookById(int id){
+        return books.stream() //Kinda like a for loop. Should study it more prolly
+            .filter(b -> b.getId() == id) //Filters looking for the id
+            .findFirst().get(); //Gets the first match
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
     }
 }
