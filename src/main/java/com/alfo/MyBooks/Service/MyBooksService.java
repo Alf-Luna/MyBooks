@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.alfo.MyBooks.Model.Book;
 
-
+//In this script I look for books in three different ways, I did it for the sake of practicing different methos. 
+//Would have been more efficient to have a method that returns the book index by id.
 @Service //so it starts it. Kinda like @component but specific for service
 public class MyBooksService {
 
@@ -28,5 +29,23 @@ public class MyBooksService {
 
     public void addBook(Book book) {
         books.add(book);
+    }
+
+    public void updateBook(Book book) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getId() == book.getId()){
+                books.set(i, book);
+                break;
+            }
+          }
+    }
+
+    public void deleteBookById(int id) {
+        for (Book book:books){
+            if (book.getId() == id){
+                books.remove(book);
+                break;
+            }
+        }
     }
 }
