@@ -30,6 +30,7 @@ public class BooksController {
         return myBooksService.getBooks();
     }
 
+
     @GetMapping("/books/{id}")
     public Book getBookById(@PathVariable int id){ //@pathvariable is used to get the id from the url, denoted by {}
         return myBooksService.getBookById(id);
